@@ -1,0 +1,24 @@
+{
+  "name": "nodechatapp",
+  "version": "1.0.0",
+  "description": "A simple node.js chat app using socket.io and express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voidbringer01/NodeChatApp.git"
+  },
+  "author": "voidbringer01",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voidbringer01/NodeChatApp/issues"
+  },
+  "homepage": "https://github.com/voidbringer01/NodeChatApp#readme",
+  "dependencies": {
+    "express": "*",
+    "jquery": "^3.3.1",
+    "socket.io": "*"
+  }
+}
