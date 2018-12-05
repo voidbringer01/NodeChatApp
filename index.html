@@ -18,6 +18,43 @@
         #messageArea{
             display:none;
         }
+        #chat{
+            max-height:420px;
+            overflow-y:scroll;
+        }
+                /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            #chat{
+                max-height:140px;
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            #chat{
+                max-height:210px;
+            }
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {
+            #chat{
+                max-height:280px;
+            }
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            #chat{
+                max-height:350px;
+            }
+        }
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+            #chat{
+                max-height:420px;
+            }
+        } 
     </style>
 </head>
 <body>
@@ -67,6 +104,9 @@
             let $messageArea=$('#messageArea');
             let $users=$('#users');
             let $username=$('#username');
+            let red=Math.round(Math.random()*255);
+            let green=Math.round(Math.random()*255);
+            let blue=Math.round(Math.random()*255);
 
             $messageForm.submit(function(e){
                 e.preventDefault();
@@ -74,7 +114,13 @@
                 $message.val('');
             });
             socket.on('new message',function(data){
-                $chat.append(`<div class="alert alert-dark" style="color:white"><strong>${data.user}</strong>: ${data.msg}</div>`);
+
+
+                if((red+green+blue)/3>=127)
+                    $chat.append(`<div class="alert alert-dark" style="background-color:rgba(${red},${green},${blue})"><strong>${data.user}</strong>: ${data.msg}</div>`);
+                else
+                    $chat.append(`<div class="alert alert-dark" style="background-color:rgba(${red},${green},${blue}); color:white;"><strong>${data.user}</strong>: ${data.msg}</div>`);
+                $chat.scrollTop($chat.scrollTop()+70);
             });
             $userForm.submit(function(e){
                 e.preventDefault();
